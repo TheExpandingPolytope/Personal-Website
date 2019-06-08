@@ -1,41 +1,59 @@
 <?php
+include 'app/includes.php';
+
+//connect to database
+$db = new DB\Connection();
+$db->connect();
+
 //init webpage data
-$title = "Jesse Engerman";
-$name = "Jesse Engerman";
-$header = "Welcome to my website";
+$title = $db->head('title');
+$name = $db->head('name');
+$header = $db->head('header');
+
+$page = array_key_exists('page',$_GET) ? $_GET['page'] : 0;
 ?>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title><?php echo $title ?></title>
+
 </head>
+
 <body>
+
     <div id="header">
-        <?php include "header.php" ?>
+        <?php include "pages/header.php" ?>
     </div>
+
     <div id="content">
         <?php
-        switch ($content) {
+        switch ($page) {
 
             case 'home':
-                include "content/home.php";
+                include "pages/home.php";
                 break;
 
             case 'projects':
-                include "content/projects.php";
+                include "pages/projects.php";
                 break;
 
             case 'contact':
-                include "content/contact.php";
+                include "pages/contact.php";
                 break;
             
             default:
-                include "content/home.php";
+                include "pages/home.php";
                 break;
+
         }
         ?>
     </div>
+
 </body>
+
 </html>
