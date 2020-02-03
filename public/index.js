@@ -2,6 +2,8 @@
 const projectTemplate = (project) => {
     return `
         <div class='project'>
+            <div class="project-title">${project.title}</div>
+            <div class="project-description">${project.description}</div>
         </div>
     `;
 };
@@ -44,9 +46,10 @@ headerIntro.innerHTML = intro;
 
 var projects = config.main.projects;
 mainProjects.innerHTML = "";
-projects.forEach((project)=>
+projects.forEach((project)=>{
     mainProjects.innerHTML += projectTemplate(project)
-);
+    console.log(project);
+});
 
 var resume = config.main.resume;
 mainResume.innerHTML = resumeTemplate(config.main.resume);
@@ -56,5 +59,19 @@ mainContact.innerHTML = contactTemplate(config.main.contact);
 
 
 //set onClicks
-navContact
+navContact.onclick = function(){
+    mainProjects.className = 'hide';
+    mainResume.className = 'hide';
+    mainContact.style.display = 'show';
+}
 
+navResume.onclick = function(){
+    mainProjects.className = 'hide';
+    mainResume.className = 'show';
+    mainContact.style.display = 'hide';
+}
+navProjects.onclick = function(){
+    mainProjects.className = 'show';
+    mainResume.className = 'hide';
+    mainContact.style.display = 'hide';
+}

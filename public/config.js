@@ -8,10 +8,7 @@ var config = {
         projects: [
             {
                 title: "polywolf",
-                description: ""
-            },
-            {
-
+                description: "webgl 2.0 gltf viewer"
             }
         ],
 

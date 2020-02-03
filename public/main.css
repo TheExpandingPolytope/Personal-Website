@@ -1,18 +1,43 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
-    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
+#container {
+    display: flex;
+    flex-direction: column;
+    width:600px;
+}
+
+#container > div {
+    margin-bottom: 10px;
+}
 header {
 
 }
 
-nav {
+#nav {
+    display: flex;
+    flex-direction: row;
+}
 
+#nav > div {
+    margin-right: 10px;
 }
 
 footer {
     
+}
+
+.show{
+    display: flex;
+}
+
+.hide {
+    display: none;
 }
