@@ -1,23 +1,14 @@
 var config = {
     header:{
         name: "jesse engerman",
-        intro: "software, games and web"
+        intro: "working on <a href='https://www.novafox.io'>novafox.io</a>"
     },
 
     main: {
-        projects: [
-            {
-                title: "polywolf",
-                description: "webgl 2.0 gltf viewer"
-            }
-        ],
 
-        resume: {
 
-        },
+        contact: [
 
-        contact: {
-
-        }
+        ]
     }
 }

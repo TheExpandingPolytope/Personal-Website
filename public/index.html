@@ -2,28 +2,81 @@
     <head>
         <link rel="stylesheet" href="main.css">
     </head>
-
+    <style>
+        body{
+            width:100%;
+            height: 100%;
+            margin:0;
+            padding:0;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            font: "Droid Sans Mono", monospace;
+            font-weight: 400;
+        }
+        body *{
+            font: "Droid Sans Mono", monospace;
+            font-weight: 400;
+            color: rgb(204, 204, 204);
+        }
+        h1, h2 {
+            color :white;
+        }
+        canvas{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+            z-index: -100;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #contacts {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+        } 
+        #contacts a {
+            margin-right:5px
+        }
+    </style>
     <body>
+        <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+        <script src="blotter.min.js"></script>
+        <script src="rollingDistortMaterial.js"></script>
         <div id="container">
-            <div id="header">
-                <img id="header-logo" src="source.gif">
-                <h1 id="header-name"></h1>
-                <h3 id="header-intro"></h3>
-            </div>
-
-            <div id="nav">
-                <div id="nav-projects">projects</div>
-                <div id="nav-resume">resume</div>
-                <div id="nav-contact">contact</div>
-            </div>
-
-            <div id="main">
-                <div class="show" id="main-projects"></div>
-                <div class="hide" id="main-resume"></div>
-                <div class="hide" id="main-contact"></div>
+            <h1>Jesse Engerman</h1>
+            <h2>Software Engineer</h2>
+            <h3>Currently building a collaborative browser based vm application <a href="https://novafox.io/signup">novafox.io</a></a>
+            <br>Feel free to contact me for whatever reason, by any means</h3>
+            <div id="contacts">
+                <a href="https://github.com/TheExpandingPolytope"><img height="20px" src="github.png"></a>
+                <a href="https://github.com/TheExpandingPolytope"><img height="20px" src="linkedin.png"></a>
+                <a href="mailto:jesseengerman@hotmail.com">jesseengerman@hotmail.com</a>
             </div>
         </div>
-        <script src="config.js"></script>
-        <script src="index.js"></script>
+        <script>
+            var text = new Blotter.Text("Jesse Engerman", {
+                family : "Droid Sans Mono",
+                size : 120,
+                fill : "#171717"
+            });
+
+            var material = new Blotter.RollingDistortMaterial();
+
+            var blotter = new Blotter(material, { texts : text });
+
+            var scope = blotter.forText(text);
+
+            var name = document.querySelector("h1");
+            document.body.append(scope.domElement);
+        
+        </script>
     </body>
 </html>
